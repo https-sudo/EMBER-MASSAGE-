@@ -18,8 +18,8 @@
         <div class="absolute inset-0 bg-black/70"></div>
         <div class="relative z-10 text-center px-6">
             <h1 class="text-5xl md:text-7xl font-black mb-6 italic">Ember Massage</h1>
-            <p class="text-lg text-gray-300 mb-8">Luxury Wellness & Healing Experience</p>
-            <a href="#booking" class="bg-amber-500 text-black px-10 py-4 rounded-2xl font-bold uppercase tracking-widest">Book Appointment</a>
+            <p class="text-lg text-gray-300 mb-8 font-light tracking-wide">Luxury Wellness & Healing Experience</p>
+            <a href="#booking" class="bg-amber-500 text-black px-10 py-4 rounded-2xl font-bold uppercase tracking-widest hover:bg-amber-400 transition-colors">Book Appointment</a>
         </div>
     </section>
 
@@ -36,12 +36,12 @@
 
                     <div>
                         <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Full Name</label>
-                        <input type="text" id="userName" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-4 outline-none focus:border-amber-500" placeholder="Enter your name">
+                        <input type="text" id="userName" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-4 outline-none focus:border-amber-500 transition-colors" placeholder="Enter your name">
                     </div>
 
                     <div>
                         <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Preferred Service</label>
-                        <select id="userService" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-4 outline-none text-white">
+                        <select id="userService" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-4 outline-none text-white cursor-pointer">
                             <option>Swedish Massage — $100 (Deposit: $60)</option>
                             <option>Deep Tissue Massage — $120 (Deposit: $72)</option>
                             <option>Hot Stone Massage — $150 (Deposit: $90)</option>
@@ -54,7 +54,7 @@
                         Pay Deposit via Telegram
                     </button>
 
-                    <button type="button" onclick="openChat()" class="w-full border border-white/20 text-white font-bold py-4 rounded-2xl uppercase text-xs mt-2">
+                    <button type="button" onclick="openSmartsupp()" class="w-full border border-white/20 text-white font-bold py-4 rounded-2xl uppercase text-xs mt-2 hover:bg-white/5 transition-colors">
                         Open Live Chat
                     </button>
                 </form>
@@ -79,27 +79,25 @@
             window.open(`https://t.me/Emberblake927?text=${encodeURIComponent(message)}`, '_blank');
         }
 
-        // LIVE CHAT ACTION
-        function openChat() {
-            if (typeof Tawk_API !== "undefined" && Tawk_API.maximize) {
-                Tawk_API.maximize();
+        // SMARTSUPP ACTION
+        function openSmartsupp() {
+            if (window.smartsupp) {
+                window.smartsupp('chat:open');
             } else {
-                alert("The chat widget is currently loading. Please wait 5 seconds or use the Telegram button.");
+                alert("Live Chat is loading. Please wait a few seconds or use Telegram.");
             }
         }
     </script>
 
     <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            // Updated to use the link you provided
-            s1.src='https://embed.tawk.to/69fe67a2013fc11c3cb94c17/default';
-            s1.charset='UTF-8';
-            s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = 'e5cedf5dc7c55c77efac3f0637f12cb8d18bad23';
+    window.smartsupp||(function(d) {
+        var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+        s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+        c.type='text/javascript';c.charset='utf-8';c.async=true;
+        c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
     </script>
 
 </body>
