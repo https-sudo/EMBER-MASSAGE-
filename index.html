@@ -21,13 +21,16 @@
         <div class="relative z-10 text-center px-6">
             <h1 class="text-5xl md:text-7xl font-black mb-6 italic text-white">Ember Massage</h1>
             <p class="text-lg text-gray-300 mb-8 font-light tracking-wide">Luxury Wellness & Healing Experience</p>
-            <a href="#booking" class="bg-amber-500 text-black px-10 py-4 rounded-2xl font-bold uppercase tracking-widest hover:bg-amber-400 transition-colors">Book Appointment</a>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#booking" class="bg-amber-500 text-black px-10 py-4 rounded-2xl font-bold uppercase tracking-widest hover:bg-amber-400 transition-colors">Book Appointment</a>
+                <a href="#services" class="border border-white/30 text-white px-10 py-4 rounded-2xl font-bold uppercase tracking-widest hover:bg-white/10 transition-colors">View Services</a>
+            </div>
         </div>
     </section>
 
-    <section id="services" class="py-24 px-6 bg-zinc-950">
-        <div class="max-w-6xl mx-auto text-center mb-16">
-            <h2 class="text-4xl font-bold mb-4">Our Services</h2>
+    <section id="services" class="py-24 px-6 bg-zinc-950 text-center">
+        <div class="max-w-6xl mx-auto mb-16">
+            <h2 class="text-4xl font-bold mb-4">Our Premium Services</h2>
             <div class="h-1 w-20 bg-amber-500 mx-auto"></div>
         </div>
         
@@ -58,7 +61,7 @@
                 <form class="space-y-6">
                     <div class="glass p-5 rounded-2xl mb-6">
                         <p class="text-gray-400 text-xs uppercase font-bold mb-2 tracking-widest">Deposit Required</p>
-                        <p class="text-sm text-gray-300">A 60% deposit is mandatory to confirm. Remaining balance is paid in person.</p>
+                        <p class="text-sm text-gray-300">To confirm your booking, a 60% deposit is required via our live chat support below.</p>
                     </div>
 
                     <div>
@@ -69,21 +72,19 @@
                     <div>
                         <label class="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Preferred Service</label>
                         <select id="userService" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-5 outline-none text-white appearance-none cursor-pointer">
-                            <option value="Swedish">Swedish Massage — $100 (Deposit: $60)</option>
-                            <option value="Deep Tissue">Deep Tissue Massage — $120 (Deposit: $72)</option>
-                            <option value="Hot Stone">Hot Stone Massage — $150 (Deposit: $90)</option>
-                            <option value="Aromatherapy">Aromatherapy Massage — $130 (Deposit: $78)</option>
-                            <option value="VIP Premium">VIP Premium Experience — $350 (Deposit: $210)</option>
+                            <option>Swedish Massage — $100 (Deposit: $60)</option>
+                            <option>Deep Tissue Massage — $120 (Deposit: $72)</option>
+                            <option>Hot Stone Massage — $150 (Deposit: $90)</option>
+                            <option>Aromatherapy Massage — $130 (Deposit: $78)</option>
+                            <option>VIP Premium Experience — $350 (Deposit: $210)</option>
                         </select>
                     </div>
 
-                    <button type="button" onclick="sendToTelegram()" class="w-full bg-amber-500 text-black font-black py-5 rounded-2xl uppercase tracking-widest text-lg shadow-xl hover:scale-[1.02] transition-all">
-                        Pay Deposit via Telegram
+                    <button type="button" onclick="openSmartsuppWithInfo()" class="w-full bg-amber-500 text-black font-black py-5 rounded-2xl uppercase tracking-widest text-lg shadow-xl hover:scale-[1.02] transition-all">
+                        Pay Deposit via Live Chat
                     </button>
 
-                    <button type="button" onclick="openSmartsupp()" class="w-full border border-white/20 text-white font-bold py-4 rounded-2xl uppercase text-xs mt-2 hover:bg-white/5 transition-colors">
-                        Open Live Chat
-                    </button>
+                    <p class="text-center text-zinc-500 text-xs italic">A therapist will assist you with payment details in the chat.</p>
                 </form>
             </div>
         </div>
@@ -98,20 +99,22 @@
     </footer>
 
     <script>
-        function sendToTelegram() {
+        function openSmartsuppWithInfo() {
             const name = document.getElementById('userName').value;
-            const service = document.getElementById('userService').options[document.getElementById('userService').selectedIndex].text;
-            if (!name) { alert("Please enter your name!"); return; }
-            
-            const message = `Hello Ember! My name is ${name}. I want to book the ${service}. I am ready to pay my deposit.`;
-            window.open(`https://t.me/Emberblake927?text=${encodeURIComponent(message)}`, '_blank');
-        }
+            const service = document.getElementById('userService').value;
 
-        function openSmartsupp() {
+            if (!name) {
+                alert("Please enter your name to proceed.");
+                return;
+            }
+
             if (window.smartsupp) {
+                // Opens the chat
                 window.smartsupp('chat:open');
+                // Optional: You can send an automatic message if your Smartsupp plan allows it
+                console.log("Customer ready to pay: " + name + " for " + service);
             } else {
-                alert("Chat is loading, please wait 3 seconds.");
+                alert("Live Chat is loading. Please wait a few seconds and click again.");
             }
         }
     </script>
