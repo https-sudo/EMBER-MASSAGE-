@@ -10,6 +10,7 @@
         html { scroll-behavior: smooth; }
         body { background-color: #000; color: #fff; font-family: sans-serif; }
         .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .service-card { background: #111111; border: 1px solid #222; border-radius: 2rem; padding: 2.5rem; transition: 0.3s; }
         select option { background-color: #18181b; color: white; }
     </style>
 </head>
@@ -18,9 +19,34 @@
     <section class="relative h-[80vh] flex items-center justify-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1400');">
         <div class="absolute inset-0 bg-black/70"></div>
         <div class="relative z-10 text-center px-6">
-            <h1 class="text-5xl md:text-7xl font-black mb-6 italic">Ember Massage</h1>
-            <p class="text-lg text-gray-300 mb-8 font-light tracking-wide text-white">Luxury Wellness & Healing Experience</p>
+            <h1 class="text-5xl md:text-7xl font-black mb-6 italic text-white">Ember Massage</h1>
+            <p class="text-lg text-gray-300 mb-8 font-light tracking-wide">Luxury Wellness & Healing Experience</p>
             <a href="#booking" class="bg-amber-500 text-black px-10 py-4 rounded-2xl font-bold uppercase tracking-widest hover:bg-amber-400 transition-colors">Book Appointment</a>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 px-6 bg-zinc-950">
+        <div class="max-w-6xl mx-auto text-center mb-16">
+            <h2 class="text-4xl font-bold mb-4">Our Services</h2>
+            <div class="h-1 w-20 bg-amber-500 mx-auto"></div>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="service-card">
+                <h3 class="text-2xl font-bold mb-4 text-amber-500">Swedish Massage</h3>
+                <p class="text-gray-400 leading-relaxed mb-8">Gentle full-body massage designed to reduce stress and improve circulation.</p>
+                <div class="text-white font-bold text-3xl">$100 / 60 mins</div>
+            </div>
+            <div class="service-card">
+                <h3 class="text-2xl font-bold mb-4 text-amber-500">Deep Tissue</h3>
+                <p class="text-gray-400 leading-relaxed mb-8">Focused treatment for muscle tension, soreness, and professional recovery.</p>
+                <div class="text-white font-bold text-3xl">$120 / 60 mins</div>
+            </div>
+            <div class="service-card">
+                <h3 class="text-2xl font-bold mb-4 text-amber-500">Hot Stone</h3>
+                <p class="text-gray-400 leading-relaxed mb-8">Relaxing heated stone treatment that melts away deep tension and daily stress.</p>
+                <div class="text-white font-bold text-3xl">$150 / 90 mins</div>
+            </div>
         </div>
     </section>
 
@@ -36,12 +62,12 @@
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Full Name</label>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Full Name</label>
                         <input type="text" id="userName" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-5 outline-none focus:border-amber-500 text-white" placeholder="Enter your name">
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Preferred Service</label>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-widest">Preferred Service</label>
                         <select id="userService" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-5 outline-none text-white appearance-none cursor-pointer">
                             <option value="Swedish">Swedish Massage — $100 (Deposit: $60)</option>
                             <option value="Deep Tissue">Deep Tissue Massage — $120 (Deposit: $72)</option>
@@ -65,8 +91,10 @@
 
     <footer class="bg-black py-16 text-center border-t border-white/5">
         <h3 class="text-2xl font-bold mb-4 uppercase tracking-widest text-white">Ember Massage</h3>
-        <p class="text-gray-500 text-sm italic mb-1 text-white">📍 St. Thomas, US Virgin Islands</p>
-        <p class="text-gray-500 text-sm italic text-white">✉️ embermassage29@gmail.com</p>
+        <div class="space-y-2 opacity-70 font-light">
+            <p>📍 St. Thomas, US Virgin Islands</p>
+            <p>✉️ embermassage29@gmail.com</p>
+        </div>
     </footer>
 
     <script>
